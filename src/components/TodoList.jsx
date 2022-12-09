@@ -1,5 +1,4 @@
-import "./style.css"
-
+import "./index.css"
 
 function TodoList({todo,handleDelete,handleChange}){
  
@@ -16,7 +15,7 @@ function TodoList({todo,handleDelete,handleChange}){
                             <input type = "checkbox" className = "check" id = {el.id} onClick={(e) => handleChange(e)} checked = {el.isCompleted} onChange = {()=> null}/>
                             <p className = "checkBoxText" style = {{color:el.isCompleted?"grey":"black"}} >{el.text}</p>
                        </div>
-                       <p className="deleteButton"  id = {el.id} onClick = {(e) => handleDelete(e)}>x</p>
+                       <p className="deleteButton" id={el.id} onClick={(e) => handleDelete(e)}>x</p>
                     </div>
                         ):null):null
                
