@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import CompletedTasks from "./CompletedTasks.jsx"
-import "./style.css"
+import "./index.css"
 import {v4 as uuid} from "uuid"
 import TodoList from "./TodoList.jsx"
 import HideAll from "./HideAllCompleted.jsx"
@@ -24,7 +24,6 @@ function Parent({handleDelete,todo,setToDo,completed,setCompleted}){
         if(data !== null){
             setToDo(JSON.parse(data))
         }
-        setToDo(prev => prev.map(el => ({...el,isCompleted:false})))
     },[setToDo])
     
     useEffect(()=>{
@@ -81,10 +80,11 @@ function Parent({handleDelete,todo,setToDo,completed,setCompleted}){
 
     return(
         <>
+          <HideAll onHide = {onHide}/>
             <div className="inputField">
+            <div className="task-input">
                 <p className = "taskText">Task</p>
-                <div>
-                    <div className="input">
+                <div className="warning-input">
                         <input
                         type="text"
                         placeholder="Write here" 
@@ -94,16 +94,13 @@ function Parent({handleDelete,todo,setToDo,completed,setCompleted}){
                         ref = {inputRef}
                         onKeyDown = {handleEnter} required/>
                         {warningMassage?<p className = "warningMassage" style = {{display:warningMassage}} >Task content can contain max 54 characters.</p>:null}
-                    </div>
-                
-                    <input type="button" value="Add" className="addButton"  ref = {buttonRef} onClick = {handleAdd} />
                 </div>
+                </div>
+                    <input type="button" value="Add" className="addButton"  ref = {buttonRef} onClick = {handleAdd} />
+               
             </div>
             {!isHide?<TodoList setToDo={setToDo} todo = {todo}     handleDelete = {handleDelete} handleChange = {handleChange} />
-      :<CompletedTasks array={completed} handleDelete = {handleDelete} handleChange ={handleChange} /> }
-      <HideAll onHide = {onHide}/>
-
-           
+      :<CompletedTasks array={completed} handleDelete = {handleDelete} handleChange ={handleChange} /> }        
       </>
 
     )
