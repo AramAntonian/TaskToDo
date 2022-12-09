@@ -1,4 +1,4 @@
-import './index.css'
+import './components/index.css'
 import Parent from './components/Parent.jsx';
 import { useState } from 'react';
 import initialValue from './components/InitialValueOfTodo';
