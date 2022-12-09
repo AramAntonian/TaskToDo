@@ -12,11 +12,13 @@ function CompletedTasks({array,handleChange,handleDelete}){
                         <input type = "checkbox" className = "check" id = {el.id} onClick={(e) => handleChange(e)}/>
                         <p className = "checkBoxText">{el.text}</p>
                 </div>
-                <p className="deleteButton"  id = {el.id} onClick = {(e) => handleDelete(e)}>x</p>
+                <p className="deleteButton" id={el.id} onClick={(e) => handleDelete(e)}>x</p>
+
+
                 </div>
                     ):null):null
         
-        }
+        }   
         {
         }
 
