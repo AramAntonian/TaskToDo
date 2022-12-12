@@ -20,14 +20,14 @@ function Parent({handleDelete,todo,setToDo,completed,setCompleted}){
     }
 
     useEffect(()=>{
-        const data = window.localStorage.getItem("MY_TODOS") 
+        const data = localStorage.getItem("MY_TODOS") 
         if(data !== null){
             setToDo(JSON.parse(data))
         }
     },[setToDo])
     
     useEffect(()=>{
-        window.localStorage.setItem("MY_TODOS",JSON.stringify(todo))
+        localStorage.setItem("MY_TODOS",JSON.stringify(todo))
     },[todo])
 
    
